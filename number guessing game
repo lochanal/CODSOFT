@@ -1,0 +1,41 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Numbergame {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int randomNumber = random.nextInt(100) + 1;
+        int numberOfAttempts = 0;
+        int maxAttempts = 3;
+
+        System.out.println("Welcome to the number guessing game!");
+        System.out.println("Enter your guess between 1 and 100:");
+
+        // Start the loop to handle the game logic
+        while (numberOfAttempts < maxAttempts) {
+            // Get the player's guess
+            int player = scanner.nextInt();
+            numberOfAttempts++;
+
+            // Check if the player's guess is correct
+            if (player == randomNumber) {
+                System.out.println("Congrats! Your guess is correct.");
+                break; // Exit the loop since the guess is correct
+            } else if (player > randomNumber) {
+                System.out.println("The number is too high, try again!");
+            } else {
+                System.out.println("The number is too low, try again!");
+            }
+
+            // If the max attempts have been reached, display the correct number
+            if (numberOfAttempts == maxAttempts) {
+                System.out.println("Sorry, you've run out of attempts. The correct number was " + randomNumber);
+            }
+        }
+
+        // Close the scanner
+        scanner.close();
+    }
+}
